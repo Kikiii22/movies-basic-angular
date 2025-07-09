@@ -1,0 +1,51 @@
+<h1>{{ movie?.Title }}</h1>
+
+<div style="display: flex; gap: 20px;">
+  <!-- Poster -->
+  <div>
+    <img [src]="movie?.Poster" [alt]="movie?.Title" width="200" />
+  </div>
+  <div>
+    <p>{{ movie?.Plot }}</p>
+    <ul>
+      <li><strong>Language:</strong> {{ movie?.Language }}</li>
+      <li><strong>Genres:</strong> {{ movie?.Genre }}</li>
+      <li><strong>Premiered:</strong> {{ movie?.Released }}</li>
+      <li><strong>Premiered:</strong> {{ movie?.Type }}</li>
+      <li><strong>Premiered:</strong> {{ movie?.totalSeasons }}</li>
+
+    </ul>
+  </div>
+</div>
+
+<hr />
+<h2>Cast</h2>
+@if (cast.length > 0) {
+  <ul>
+    @for (c of cast;track c) {
+      <li>{{ c }}</li>
+    }
+  </ul>
+} @else {
+  <p>Cast data is not available.</p>
+}
+
+<hr />
+
+<h2>Episodes</h2>
+@if (seasons.length > 0) {
+  @for (season of seasons;track season.Season) {
+    <div>
+      <h3>Season {{ season.Season }}</h3>
+      <ul>
+        @for (ep of season.Episodes;track ep.Episode) {
+          <li>
+            {{ ep.Episode }}. {{ ep.Title }} ({{ ep.Released }}) — Rating: {{ ep.imdbRating }}
+          </li>
+        }
+      </ul>
+    </div>
+  }
+} @else {
+  <p>No season data available.</p>
+}
