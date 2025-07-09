@@ -1,1 +1,16 @@
-<p>search-movie works!</p>
+<div class="movie-card">
+  @if ( fullMovie ) {
+    <img [src]="fullMovie.Poster !== 'N/A' ? fullMovie.Poster : 'https://via.placeholder.com/100x150?text=No+Image'"
+         alt="{{ fullMovie.Title }}"
+         class="poster">
+
+    <div class="movie-info">
+      <h3>{{ fullMovie.Title }} ({{ fullMovie.Year }})</h3>
+      <p><strong>Plot:</strong> {{ fullMovie.Plot }}</p>
+      <p><strong>Rating:</strong> {{ fullMovie.imdbRating || 'N/A' }} ⭐</p>
+      <a [routerLink]="['/movie', fullMovie.imdbID]">More details</a>
+    </div>
+  } @else {
+    <h2>Movie not showing</h2>
+  }
+</div>

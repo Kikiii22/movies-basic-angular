@@ -1,4 +1,5 @@
-import {Episode} from './episode';
+import {Season} from './season';
+import {Rating} from './rating';
 
 export interface Movie {
   Title?: string;
@@ -26,14 +27,6 @@ export interface Movie {
   Seasons?: Season[];
 }
 
-export interface Rating {
-  Source: string;
-  Value: string;
-}
 
-export interface Season {
-  Title: string;
-  Season: string;
-  totalSeasons: string;
-  Episodes: Episode[];
-}
+
+

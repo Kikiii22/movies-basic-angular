@@ -1,0 +1,104 @@
+.infos {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.left-column {
+  flex: 1;
+  min-width: 300px;
+  padding: 10px;
+  background-color: #fef0f5;
+  border: 1px solid #f9c6d1;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+}
+
+.right-column {
+  flex: 1;
+  min-width: 300px;
+  padding: 10px;
+  background-color: #fef0f5;
+  border: 1px solid #f9c6d1;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.movie-details-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff0f5;
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.movie-details-container h1 {
+  font-size: 32px;
+  color: hotpink;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.movie-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.movie-main img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-info {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+.movie-info p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.movie-info ul {
+  padding-left: 20px;
+  list-style: none;
+}
+
+.movie-info li {
+  margin-bottom: 8px;
+}
+
+hr {
+  margin: 40px 0 20px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+h2 {
+  color: lightcoral;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.cast-list,
+.episode-list {
+  padding-left: 20px;
+  list-style: none;
+}
+
+.cast-list li
+{
+  margin-bottom: 6px;
+}
+.episode-list li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}

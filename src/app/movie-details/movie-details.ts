@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MoviesService} from '../movies-service';
-import {Movie, Season} from '../interfaces/movie';
+import {Movie, } from '../interfaces/movie';
 import {forkJoin} from 'rxjs';
+import {Season} from '../interfaces/season';
 
 @Component({
   selector: 'app-movie-details',

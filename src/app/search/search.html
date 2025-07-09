@@ -1,15 +1,14 @@
-<h2>My movies app</h2>
-<label for="search">Search movies</label>
-<input #searchInput type="text" placeholder="Start searching...." (input)="onSearch(searchInput.value)">
-<ul>
-  @for(m of movies$ | async; track m.imdbID) {
-    <li>
-      <img [src]="m.Poster !== 'N/A' ? m.Poster : 'https://via.placeholder.com/100x150?text=No+Image'" alt="{{m.Title}}" width="100">
-      <div>
-        <strong>{{ m.Title }}</strong> ({{ m.Year }})<br>
-        <span>Type: {{ m.Type }}</span><br>
-        <a [routerLink]="['/movie', m.imdbID]">More details</a>
-      </div>
-    </li>
-  }
-</ul>
+<div class="movies-search">
+  <label for="search">Search movies</label>
+  <div class="search-bar">
+    <input #searchInput type="text" id="search" placeholder="Start searching..." />
+    <button (click)="onSearch(searchInput.value)">Search</button>
+  </div>
+  <ul>
+    @for (m of movies$ | async; track m.imdbID) {
+      <li>
+        <app-search-movie [movie]="m"></app-search-movie>
+      </li>
+    }
+  </ul>
+</div>

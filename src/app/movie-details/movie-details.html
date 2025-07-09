@@ -1,27 +1,30 @@
+<div class="movie-details-container">
 <h1>{{ movie?.Title }}</h1>
 
-<div style="display: flex; gap: 20px;">
-  <!-- Poster -->
+<div class="movie-main">
   <div>
-    <img [src]="movie?.Poster" [alt]="movie?.Title" width="200" />
+    <img [src]="movie?.Poster" [alt]="movie?.Title"  />
   </div>
-  <div>
+  <div class="movie-info">
     <p>{{ movie?.Plot }}</p>
     <ul>
       <li><strong>Language:</strong> {{ movie?.Language }}</li>
       <li><strong>Genres:</strong> {{ movie?.Genre }}</li>
-      <li><strong>Premiered:</strong> {{ movie?.Released }}</li>
-      <li><strong>Premiered:</strong> {{ movie?.Type }}</li>
-      <li><strong>Premiered:</strong> {{ movie?.totalSeasons }}</li>
-
+      <li><strong>Year Released:</strong> {{ movie?.Released }}</li>
+      <li><strong>Type:</strong> {{ movie?.Type }}</li>
+      @if (movie?.Type==='series'){
+      <li><strong>Seasons:</strong> {{ movie?.totalSeasons }}</li>
+      }
     </ul>
   </div>
 </div>
 
 <hr />
+  <div class="infos">
+    <div class="left-column">
 <h2>Cast</h2>
 @if (cast.length > 0) {
-  <ul>
+  <ul class="cast-list">
     @for (c of cast;track c) {
       <li>{{ c }}</li>
     }
@@ -30,17 +33,16 @@
   <p>Cast data is not available.</p>
 }
 
-<hr />
-
+</div>
+    <div class="right-column">
 <h2>Episodes</h2>
 @if (seasons.length > 0) {
   @for (season of seasons;track season.Season) {
     <div>
-      <h3>Season {{ season.Season }}</h3>
-      <ul>
+      <ul class="episode-list">
         @for (ep of season.Episodes;track ep.Episode) {
           <li>
-            {{ ep.Episode }}. {{ ep.Title }} ({{ ep.Released }}) — Rating: {{ ep.imdbRating }}
+            S{{season.Season}}E{{ ep.Episode }} {{ ep.Title }}
           </li>
         }
       </ul>
@@ -49,3 +51,6 @@
 } @else {
   <p>No season data available.</p>
 }
+    </div>
+  </div>
+</div>
