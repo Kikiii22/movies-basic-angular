@@ -1,8 +1,17 @@
 <div class="movies-search">
   <label for="search">Search movies</label>
   <div class="search-bar">
-    <input #searchInput type="text" id="search" placeholder="Start searching..." />
+    <input #searchInput
+           type="text" id="search"
+           placeholder="Start searching..."
+           (input)="onSearch(searchInput.value)"
+           (keydown.enter)="onSearch(searchInput.value)"/>
     <button (click)="onSearch(searchInput.value)">Search</button>
+  </div>
+  <div class="loading">
+    @if (loading) {
+      <span>Loading movies...</span>
+    }
   </div>
   <ul>
     @for (m of movies$ | async; track m.imdbID) {

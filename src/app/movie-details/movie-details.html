@@ -1,56 +1,57 @@
 <div class="movie-details-container">
-<h1>{{ movie?.Title }}</h1>
-
-<div class="movie-main">
-  <div>
-    <img [src]="movie?.Poster" [alt]="movie?.Title"  />
-  </div>
-  <div class="movie-info">
-    <p>{{ movie?.Plot }}</p>
-    <ul>
-      <li><strong>Language:</strong> {{ movie?.Language }}</li>
-      <li><strong>Genres:</strong> {{ movie?.Genre }}</li>
-      <li><strong>Year Released:</strong> {{ movie?.Released }}</li>
-      <li><strong>Type:</strong> {{ movie?.Type }}</li>
-      @if (movie?.Type==='series'){
-      <li><strong>Seasons:</strong> {{ movie?.totalSeasons }}</li>
-      }
-    </ul>
-  </div>
-</div>
-
-<hr />
-  <div class="infos">
-    <div class="left-column">
-<h2>Cast</h2>
-@if (cast.length > 0) {
-  <ul class="cast-list">
-    @for (c of cast;track c) {
-      <li>{{ c }}</li>
-    }
-  </ul>
-} @else {
-  <p>Cast data is not available.</p>
-}
-
-</div>
-    <div class="right-column">
-<h2>Episodes</h2>
-@if (seasons.length > 0) {
-  @for (season of seasons;track season.Season) {
+  <h1>{{ movie?.Title }}</h1>
+  <div class="movie-main">
     <div>
-      <ul class="episode-list">
-        @for (ep of season.Episodes;track ep.Episode) {
-          <li>
-            S{{season.Season}}E{{ ep.Episode }} {{ ep.Title }}
-          </li>
+      <img [src]="movie?.Poster" [alt]="movie?.Title"/>
+    </div>
+    <div class="movie-info">
+      <p>{{ movie?.Plot }}</p>
+      <ul>
+        <li><strong>Language:</strong> {{ movie?.Language }}</li>
+        <li><strong>Genres:</strong> {{ movie?.Genre }}</li>
+        <li><strong>Year Released:</strong> {{ movie?.Released }}</li>
+        <li><strong>Type:</strong> {{ movie?.Type | titlecase }}</li>
+        @if (movie?.Type === 'series') {
+          <li><strong>Seasons:</strong> {{ movie?.totalSeasons }}</li>
         }
       </ul>
     </div>
-  }
-} @else {
-  <p>No season data available.</p>
-}
+  </div>
+  <hr/>
+  <div class="infos">
+    <div class="left-column">
+      <h2>Cast</h2>
+      @if (cast.length > 0) {
+        <ul class="cast-list">
+          @for (c of cast; track c) {
+            <li>
+              <img [src]="images[c] || defaultImage" alt="{{ c }}" class="cast-photo">
+              <span>{{ c }}</span>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p>Cast data is not available.</p>
+      }
+
+    </div>
+    <div class="right-column">
+      <h2>Episodes</h2>
+      @if (seasons.length > 0) {
+        @for (season of seasons; track season.Season) {
+          <div>
+            <ul class="episode-list">
+              @for (ep of season.Episodes; track ep.Episode) {
+                <li>
+                  S{{ season.Season }}E{{ ep.Episode }} {{ ep.Title }}
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      } @else {
+        <p>No season data available.</p>
+      }
     </div>
   </div>
 </div>

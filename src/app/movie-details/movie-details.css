@@ -1,37 +1,39 @@
 .infos {
   display: flex;
-  gap: 40px;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 40px;
 }
 
 .left-column {
-  flex: 1;
-  min-width: 300px;
-  padding: 10px;
   background-color: #fef0f5;
   border: 1px solid #f9c6d1;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-
+  flex: 1;
+  min-width: 300px;
+  padding: 10px;
 }
 
 .right-column {
-  flex: 1;
-  min-width: 300px;
-  padding: 10px;
   background-color: #fef0f5;
   border: 1px solid #f9c6d1;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 300px;
+  padding: 10px;
+
 }
+
 .movie-details-container {
-  max-width: 1000px;
-  margin: 40px auto;
   padding: 30px;
   background-color: #fff0f5;
   border-radius: 12px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: 40px auto;
+
 }
 
 .movie-details-container h1 {
@@ -42,17 +44,19 @@
 }
 
 .movie-main {
-  display: flex;
   flex-wrap: wrap;
   gap: 25px;
   margin-bottom: 30px;
+  display: flex;
+
 }
 
 .movie-main img {
-  width: 200px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+
 }
 
 .movie-info {
@@ -64,6 +68,7 @@
 .movie-info p {
   margin-bottom: 15px;
   line-height: 1.6;
+
 }
 
 .movie-info ul {
@@ -76,9 +81,10 @@
 }
 
 hr {
-  margin: 40px 0 20px;
   border: none;
   border-top: 1px solid #ddd;
+  margin: 40px 0 20px;
+
 }
 
 h2 {
@@ -86,19 +92,36 @@ h2 {
   font-size: 24px;
   margin-bottom: 15px;
 }
-
-.cast-list,
-.episode-list {
-  padding-left: 20px;
+.cast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 0;
   list-style: none;
 }
 
-.cast-list li
-{
-  margin-bottom: 6px;
+.cast-list li {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f9c6d1;
+  padding: 8px 12px;
+
 }
-.episode-list li {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #444;
+
+.cast-list li:hover {
+  transform: scale(1.05);
+
+}
+
+.cast-photo {
+  width: 100px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
