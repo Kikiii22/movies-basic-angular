@@ -23,7 +23,6 @@
   flex: 1;
   min-width: 300px;
   padding: 10px;
-
 }
 
 .movie-details-container {
@@ -31,14 +30,13 @@
   background-color: #fff0f5;
   border-radius: 12px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 1000px;
+  max-width: 1300px;
   margin: 40px auto;
-
 }
 
 .movie-details-container h1 {
   font-size: 32px;
-  color: hotpink;
+  color: lightcoral;
   margin-bottom: 25px;
   text-align: center;
 }
@@ -48,7 +46,6 @@
   gap: 25px;
   margin-bottom: 30px;
   display: flex;
-
 }
 
 .movie-main img {
@@ -56,7 +53,6 @@
   border-radius: 10px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   width: 200px;
-
 }
 
 .movie-info {
@@ -68,7 +64,6 @@
 .movie-info p {
   margin-bottom: 15px;
   line-height: 1.6;
-
 }
 
 .movie-info ul {
@@ -84,7 +79,6 @@ hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 40px 0 20px;
-
 }
 
 h2 {
@@ -92,6 +86,7 @@ h2 {
   font-size: 24px;
   margin-bottom: 15px;
 }
+
 .cast-list {
   display: flex;
   flex-direction: column;
@@ -104,17 +99,39 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 12px;
-  background-color: #f9c6d1;
+  background-color: #ffcdcf;
   padding: 8px 12px;
-
 }
 
 .cast-list li:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 
+}
+
+.cast-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.cast-item span {
+  color: #444;
+  font-size: 16px;
+}
+
+.cast-item a {
+  color: hotpink;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.cast-item a:hover {
+  text-decoration: underline;
+  color: #fef0f5;
 }
 
 .cast-photo {
@@ -123,5 +140,44 @@ h2 {
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
 }
+
+.season-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.season-buttons button {
+  margin: 5px 10px 10px 0;
+  padding: 8px 16px;
+  background-color: lightcoral;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.season-buttons button:hover {
+  background-color: white;
+  color: lightcoral;
+  border: 1px solid #ff9a9e;
+}
+
+.episode-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.episode-list li {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+

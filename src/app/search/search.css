@@ -5,7 +5,6 @@
   max-width: 1000px;
   margin: 50px auto;
   padding: 30px;
-
 }
 
 .movies-search label {
@@ -14,15 +13,12 @@
   display: block;
   margin-bottom: 10px;
   font-size: 20px;
-
-
 }
 
 .search-bar {
   display: flex;
   margin-bottom: 25px;
   gap: 12px;
-
 }
 
 .search-bar input {
@@ -37,8 +33,6 @@
 
 .search-bar input:focus {
   border-color: lightpink;
-
-
 }
 
 .search-bar button {
@@ -49,7 +43,6 @@
   background-color: lightpink;
   color: white;
   font-size: 16px;
-
 }
 
 .search-bar button:hover {
@@ -75,3 +68,5 @@
 .movies-search li {
   margin-bottom: 20px;
 }
+
+

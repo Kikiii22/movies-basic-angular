@@ -25,6 +25,7 @@ export interface Movie {
   totalSeasons?: number;
   Response?: 'True' | 'False';
   Seasons?: Season[];
+  totalResults?:string;
 }
 
 

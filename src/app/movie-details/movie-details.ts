@@ -15,23 +15,27 @@ import {TitleCasePipe} from '@angular/common';
   styleUrl: './movie-details.css'
 })
 export class MovieDetails implements OnInit {
-  movie: Movie | undefined ;
+  movie: Movie | undefined;
+  seasons: Season[] = [];
+  cast: string[] = [];
+  selectedSeason: string | null = null;
+  actors: { [name: string]: { id: number | undefined; name: string | undefined; image: string } } = {};
+  defaultImage = '/No_Image_Available.jpg';
 
   constructor(private route: ActivatedRoute, private service: MoviesService) {
   }
 
-  seasons: Season[] = [];
-  cast: string[] = [];
-  images: { [name: string]: string } = {};
-  defaultImage = 'https://via.placeholder.com/100x150?text=No+Image';
-
   loadImages() {
     for (const actor of this.cast) {
       this.service.getActor(actor).subscribe(res => {
-        this.images[actor] = res?.profile_path
-          ? `https://image.tmdb.org/t/p/w200${res.profile_path}`
-          : this.defaultImage;
-      })
+        this.actors[actor] = {
+          id: res?.id,
+          name: res?.name,
+          image: res?.profile_path
+            ? `https://image.tmdb.org/t/p/w200${res.profile_path}`
+            : this.defaultImage
+        }
+      });
     }
   }
 
@@ -48,7 +52,7 @@ export class MovieDetails implements OnInit {
         if (movie.Type === 'series' && movie.totalSeasons) {
           const total = +movie.totalSeasons;
           const calls = [];
-          for (let i = 0; i < total; i++) {
+          for (let i = 1; i <= total; i++) {
             calls.push(this.service.getSeason(id, i));
           }
           forkJoin(calls).subscribe((seasons: Season[]) => {
@@ -58,6 +62,13 @@ export class MovieDetails implements OnInit {
       });
     }
 
+  }
+  Season(Season: string) {
+    if (this.selectedSeason === Season) {
+      this.selectedSeason = null;
+    } else {
+      this.selectedSeason = Season;
+    }
   }
 }
 

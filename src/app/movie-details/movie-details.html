@@ -8,12 +8,15 @@
       <p>{{ movie?.Plot }}</p>
       <ul>
         <li><strong>Language:</strong> {{ movie?.Language }}</li>
-        <li><strong>Genres:</strong> {{ movie?.Genre }}</li>
+        @if (movie && movie.Genre) {
+          <li><strong>Genres:</strong> {{ movie.Genre.split(',').join(" | ") }}</li>
+        }
         <li><strong>Year Released:</strong> {{ movie?.Released }}</li>
         <li><strong>Type:</strong> {{ movie?.Type | titlecase }}</li>
         @if (movie?.Type === 'series') {
           <li><strong>Seasons:</strong> {{ movie?.totalSeasons }}</li>
         }
+        <li><strong>Rating:</strong> {{ movie?.imdbRating || 'N/A' }} ⭐</li>
       </ul>
     </div>
   </div>
@@ -25,8 +28,13 @@
         <ul class="cast-list">
           @for (c of cast; track c) {
             <li>
-              <img [src]="images[c] || defaultImage" alt="{{ c }}" class="cast-photo">
-              <span>{{ c }}</span>
+              <img [src]="actors[c].image || defaultImage" alt="{{ c }}" class="cast-photo">
+              <div class="cast-item">
+                <span>{{ c }}</span>
+                <a [href]="'https://www.themoviedb.org/person/' + actors[c].id" target="_blank">
+                  View Actor Page
+                </a>
+              </div>
             </li>
           }
         </ul>
@@ -38,17 +46,35 @@
     <div class="right-column">
       <h2>Episodes</h2>
       @if (seasons.length > 0) {
-        @for (season of seasons; track season.Season) {
-          <div>
-            <ul class="episode-list">
-              @for (ep of season.Episodes; track ep.Episode) {
-                <li>
-                  S{{ season.Season }}E{{ ep.Episode }} {{ ep.Title }}
-                </li>
-              }
-            </ul>
+        <div >
+          <div class="season-buttons">
+            @for (season of seasons; track season.Season) {
+              <button
+                (click)="Season(season.Season)"
+                [class.active]="selectedSeason === season.Season">
+                S{{ season.Season }}
+              </button>
+            }
           </div>
-        }
+
+          <div >
+            @if (selectedSeason) {
+              <ul class="episode-list">
+                @for (season of seasons; track season.Season) {
+                  @if (season.Season === selectedSeason) {
+                    @for (ep of season.Episodes; track ep.Episode) {
+                      <li>
+                        S{{ season.Season }}E{{ ep.Episode }} {{ ep.Title }}
+                      </li>
+                    }
+                  }
+                }
+              </ul>
+            } @else {
+              <p>Select a season to see episodes</p>
+            }
+          </div>
+        </div>
       } @else {
         <p>No season data available.</p>
       }

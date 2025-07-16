@@ -6,6 +6,7 @@ import {Season} from './interfaces/season';
 import {Actor} from './interfaces/actor';
 import {ActorResults} from './interfaces/actorResults';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,9 +19,8 @@ export class  MoviesService {
   private apiPicturesKey='76eabc301dda3e253fce074b6d1ddbdd'
 
   searchMovies(query: string): Observable<Movie[]> {
-
     const url = `${this.apiUrl}?apikey=${this.apiKey}&s=${query}`;
-    return this.http.get<{ Search: Movie[], Response: string }>(url).pipe(
+    return this.http.get<{ Search: Movie[], Response: string ,totalResults:string}>(url).pipe(
       map(res =>
       {
         const movies=res.Search||[];
@@ -29,6 +29,7 @@ export class  MoviesService {
 
     )
   }
+
   unique(movies: Movie[]): Movie[] {
     const duplicatesRemove = new Set();
     return movies.filter(movie => {

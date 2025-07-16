@@ -1,6 +1,6 @@
 <div class="movie-card">
-  @if ( fullMovie ) {
-    <img [src]="fullMovie.Poster !== 'N/A' ? fullMovie.Poster : 'https://via.placeholder.com/100x150?text=No+Image'"
+  @if (fullMovie) {
+    <img [src]="fullMovie.Poster !== 'N/A' ? fullMovie.Poster : '/No_Image_Available.jpg'"
          alt="{{ fullMovie.Title }}"
          class="poster">
 
@@ -8,6 +8,14 @@
       <h3>{{ fullMovie.Title }} ({{ fullMovie.Year }})</h3>
       <p><strong>Plot:</strong> {{ fullMovie.Plot }}</p>
       <p><strong>Rating:</strong> {{ fullMovie.imdbRating || 'N/A' }} ⭐</p>
+
+      @if (fullMovie.Genre) {
+        <p>
+          <strong>Genres:</strong>
+          {{ fullMovie.Genre.split(',').join(' | ') }}
+        </p>
+      }
+
       <a [routerLink]="['/movie', fullMovie.imdbID]">More details</a>
     </div>
   } @else {

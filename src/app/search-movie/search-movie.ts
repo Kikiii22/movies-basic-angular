@@ -15,7 +15,6 @@ import {MoviesService} from '../movies-service';
 export class SearchMovie implements OnInit {
   @Input() movie!: Movie;
   fullMovie!: Movie;
-
   constructor(private service: MoviesService) {
   }
 

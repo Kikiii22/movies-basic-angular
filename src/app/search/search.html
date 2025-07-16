@@ -14,10 +14,11 @@
     }
   </div>
   <ul>
-    @for (m of movies$ | async; track m.imdbID) {
+    @for (m of movies$|async; track m.imdbID) {
       <li>
         <app-search-movie [movie]="m"></app-search-movie>
       </li>
     }
   </ul>
+
 </div>
